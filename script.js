@@ -1,39 +1,47 @@
-const rangeInput = document.querySelectorAll(".range-input input"),
-    priceInput = document.querySelectorAll(".price-input input"),
-    range = document.querySelector(".slider .progress");
-let priceGap = 1000;
-priceInput.forEach((input) => {
-    input.addEventListener("input", (e) => {
-        let minPrice = parseInt(priceInput[0].value),
-            maxPrice = parseInt(priceInput[1].value);
+window.onload = function () {
+    slideMin();
+    slideMax();
+};
 
-        if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
-            if (e.target.className === "input-min") {
-                rangeInput[0].value = minPrice;
-                range.style.left = (minPrice / rangeInput[0].max) * 100 + "Р";
-            } else {
-                rangeInput[1].value = maxPrice;
-                range.style.right =
-                    100 - (maxPrice / rangeInput[1].max) * 100 + "Р";
-            }
-        }
-    });
-});
-rangeInput.forEach((input) => {
-    input.addEventListener("input", (e) => {
-        let minVal = parseInt(rangeInput[0].value),
-            maxVal = parseInt(rangeInput[1].value);
-        if (maxVal - minVal < priceGap) {
-            if (e.target.className === "range-min") {
-                rangeInput[0].value = maxVal - priceGap;
-            } else {
-                rangeInput[1].value = minVal + priceGap;
-            }
-        } else {
-            priceInput[0].value = minVal;
-            priceInput[1].value = maxVal;
-            range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
-            range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-        }
-    });
-});
+const minVal = document.querySelector(".min-val");
+const maxVal = document.querySelector(".max-val");
+const priceInputMin = document.querySelector(".min-input");
+const priceInputMax = document.querySelector(".max-input");
+const minTooltip = document.querySelector(".min-tooltip");
+const maxTooltip = document.querySelector(".max-tooltip");
+const minGap = 1500;
+const range = document.querySelector(".slider-track");
+const sliderMinValue = parseInt(minVal.min);
+const sliderMaxValue = parseInt(maxVal.max);
+
+function slideMin() {
+    let gap = parseInt(maxVal.value) - parseInt(minVal.value);
+}
+
+function slideMax() {
+    let gap = parseInt(maxVal.value) - parseInt(minVal.value);
+}
+
+function setArea() {
+    range.style.left = `${
+        ((minVal.value - sliderMinValue) / (sliderMaxValue - sliderMinValue)) *
+        100
+    }%`;
+
+    range.style.left = (minVal.value / sliderMaxValue) * 100 + "%";
+    minTooltip.style.left = (minVal.value / sliderMaxValue) * 100 + "%";
+    range.style.right = `${
+        100 -
+        ((maxVal.value - sliderMinValue) / (sliderMaxValue - sliderMinValue)) *
+            100
+    }%`;
+    maxTooltip.style.right = 100 - (maxVal.value / sliderMaxValue) * 100 + "%";
+}
+
+function setMinInput() {
+    let minPrice = parseInt(priceInputMin.value);
+}
+
+function setMaxInput() {
+    let maxPrice = parseInt(priceInputMax.value);
+}
