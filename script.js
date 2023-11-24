@@ -10,11 +10,11 @@ priceInput.forEach((input) => {
         if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
             if (e.target.className === "input-min") {
                 rangeInput[0].value = minPrice;
-                range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+                range.style.left = (minPrice / rangeInput[0].max) * 100 + "Р";
             } else {
                 rangeInput[1].value = maxPrice;
                 range.style.right =
-                    100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+                    100 - (maxPrice / rangeInput[1].max) * 100 + "Р";
             }
         }
     });
