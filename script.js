@@ -1,8 +1,8 @@
-const rangeInput = document.querySelectorAll(".range-input .field input"),
-    priceInput = document.querySelectorAll(".price-input .field input"),
+const rangeInput = document.querySelectorAll(".range-input input"),
+    priceInput = document.querySelectorAll(".price-input input"),
     range = document.querySelector(".slider .progress");
 let priceGap = 1000;
-priceInput.forEach((input) => {
+rangeInput.forEach((input) => {
     input.addEventListener("input", (e) => {
         let minPrice = parseInt(priceInput[0].value),
             maxPrice = parseInt(priceInput[1].value);
