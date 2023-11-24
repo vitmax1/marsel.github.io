@@ -19,3 +19,4 @@ priceInput.forEach((input) => {
         }
     });
 });
+console.log(rangeInput);
