@@ -8,12 +8,24 @@
 </head>
 <body>
 	 <div class="double-slider-box">
-        <h3 class="range-title">Price Range Slider</h3>
-        <div class="range-slider">
-
+				 <div class="input-box">
+					<div class="min-box">
+						<div class="input-wrap">
+							<input type="text" name="min_input" class="input-field min-input" onchange="setMinInput()">
+							<span class="input-addon">₽</span>
+						</div>
+					</div>
+					<div class="max-box">
+						<div class="input-wrap">
+							<input type="text" name="max_input" class="input-field max-input" onchange="setMaxInput()">
+							<span class="input-addon">₽</span>
+						</div>
+					</div>
         </div>
-        <div class="input-box">
-
+        <div class="range-slider">
+					<span class="slider-track"></span>
+					<input type="range" name="min_val" class="min-val" min="0" max="1000" value="100"  oninput="slideMin()">
+					<input type="range" name="max_val" class="max-val" min="0" max="1000" value="900"  oninput="slideMax()">
         </div>
     </div>
 		<script src="script.js"></script>
